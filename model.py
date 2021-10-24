@@ -63,24 +63,40 @@ class DecoderRNN(nn.Module):
         hidden = (torch.randn(self.num_layers, 1, self.hidden_size).to(inputs.device), torch.randn(1, 1, 512).to(inputs.device))
         
         for i in range(max_len):
+            
             lstm_out, hidden = self.lstm(inputs, hidden)
+            
             
             outputs = self.linear(lstm_out)
             
             
             outputs = outputs.squeeze(1)
             
+            #outputs[0][0]=0
+            
             word  = outputs.argmax(dim=1)
             
+            
+            #print(outputs.max(dim = 1))
+            #print(outputs.argmax(dim=1))
+            
+            
+            #print(word.item())
+            
             cap.append(word.item())
+            
             
             #inputs = self.embedding(word.unsqueeze(0))
             
                                    
             inputs = self.embedding(word)
-            inputs = inputs.unsqueeze(1)                        
+            inputs = inputs.unsqueeze(1) 
             
-                                   
+            
+            #if i>6:
+             #   inputs = self.embedding(word)
+             #   inputs = inputs.unsqueeze(1)
+           
             
         return cap
         
