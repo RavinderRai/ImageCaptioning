@@ -13,9 +13,9 @@ $ pip install Pillow
 
 This will work for windows, mac and linux. For othe libraries, replace 'Pillow' with the name of the other library to be download.
 
-#### Author(s)
+### Author(s)
 
 Ravinder Rai
 
-##### Acknowledgments
+### Acknowledgments
 This project originates from the Computer Vision Nanodegree offered by Udacity. 
